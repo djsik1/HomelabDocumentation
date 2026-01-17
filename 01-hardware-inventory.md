@@ -351,7 +351,7 @@ This document tracks all physical and virtual hardware in the homelab environmen
 **Hosting:** VPS (External)
 **Provider:** Hostinger
 **Location:** [Data center region]
-**IP Address:** 82.29.152.83 [REDACT BEFORE SHARING]
+**IP Address:**       
 **Resources:**
 - vCPU: 2 (AMD EPYC 9354P)
 - RAM: 8 GB
