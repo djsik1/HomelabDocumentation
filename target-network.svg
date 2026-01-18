@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="750" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern -->
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#ffffff08" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1000" height="750" fill="url(#grid)"/>
+
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="24" font-weight="bold" filter="url(#glow)">TARGET STATE: VLAN SEGMENTED NETWORK</text>
+  <text x="500" y="55" text-anchor="middle" fill="#666" font-family="monospace" font-size="12">Defense in Depth with 7 Security Zones</text>
+
+  <!-- ISP Cloud -->
+  <ellipse cx="500" cy="95" rx="70" ry="30" fill="#1e3a5f" stroke="#00d4ff" stroke-width="2"/>
+  <text x="500" y="100" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="13">INTERNET</text>
+
+  <!-- Connection from ISP to OPNsense -->
+  <line x1="500" y1="125" x2="500" y2="155" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <!-- OPNsense Firewall - Central -->
+  <rect x="400" y="155" width="200" height="70" rx="8" fill="#0d2137" stroke="#00d4ff" stroke-width="3" filter="url(#shadow)"/>
+  <text x="500" y="180" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="14" font-weight="bold">OPNsense FIREWALL</text>
+  <text x="500" y="198" text-anchor="middle" fill="#888" font-family="monospace" font-size="10">Stateful Inspection • NAT • VPN</text>
+  <text x="500" y="213" text-anchor="middle" fill="#4ecdc4" font-family="monospace" font-size="9">Inter-VLAN Routing • Firewall Rules</text>
+
+  <!-- Success badge -->
+  <rect x="615" y="160" width="100" height="40" rx="3" fill="#27ae6022" stroke="#27ae60" stroke-width="1"/>
+  <text x="665" y="178" text-anchor="middle" fill="#27ae60" font-family="monospace" font-size="9">✓ SEGMENTED</text>
+  <text x="665" y="192" text-anchor="middle" fill="#27ae60" font-family="monospace" font-size="9">✓ CONTROLLED</text>
+
+  <!-- Main trunk line to switch -->
+  <line x1="500" y1="225" x2="500" y2="260" stroke="#4ecdc4" stroke-width="4"/>
+  <text x="520" y="248" fill="#4ecdc4" font-family="monospace" font-size="8">802.1Q Trunk</text>
+
+  <!-- Managed Switch -->
+  <rect x="400" y="260" width="200" height="50" rx="5" fill="#1a1a2e" stroke="#2ecc71" stroke-width="2" filter="url(#shadow)"/>
+  <text x="500" y="283" text-anchor="middle" fill="#2ecc71" font-family="monospace" font-size="12" font-weight="bold">MANAGED SWITCH</text>
+  <text x="500" y="300" text-anchor="middle" fill="#888" font-family="monospace" font-size="9">TL-SG1428PE • VLAN Tagging • PoE+</text>
+
+  <!-- VLAN connection lines from switch -->
+  <line x1="150" y1="310" x2="150" y2="360" stroke="#9b59b6" stroke-width="2"/>
+  <line x1="290" y1="310" x2="290" y2="360" stroke="#3498db" stroke-width="2"/>
+  <line x1="430" y1="310" x2="430" y2="360" stroke="#e67e22" stroke-width="2"/>
+  <line x1="570" y1="310" x2="570" y2="360" stroke="#f39c12" stroke-width="2"/>
+  <line x1="710" y1="310" x2="710" y2="360" stroke="#e74c3c" stroke-width="2"/>
+  <line x1="850" y1="310" x2="850" y2="360" stroke="#95a5a6" stroke-width="2"/>
+
+  <!-- Horizontal line connecting to switch -->
+  <line x1="150" y1="310" x2="850" y2="310" stroke="#4ecdc455" stroke-width="2"/>
+  <line x1="500" y1="310" x2="500" y2="310" stroke="#4ecdc4" stroke-width="2"/>
+
+  <!-- VLAN 1 - Management (Purple) -->
+  <rect x="70" y="360" width="160" height="170" rx="8" fill="#9b59b615" stroke="#9b59b6" stroke-width="2"/>
+  <rect x="70" y="360" width="160" height="25" rx="8" fill="#9b59b6"/>
+  <text x="150" y="378" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">VLAN 1 - MGMT</text>
+  <text x="150" y="400" text-anchor="middle" fill="#9b59b6" font-family="monospace" font-size="9">10.0.1.0/24</text>
+
+  <rect x="85" y="415" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#9b59b655" stroke-width="1"/>
+  <text x="150" y="433" text-anchor="middle" fill="#9b59b6" font-family="monospace" font-size="9">Proxmox Mgmt</text>
+  <text x="150" y="450" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.1.10</text>
+
+  <rect x="85" y="470" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#9b59b655" stroke-width="1"/>
+  <text x="150" y="488" text-anchor="middle" fill="#9b59b6" font-family="monospace" font-size="9">Switch Mgmt</text>
+  <text x="150" y="505" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.1.2</text>
+
+  <!-- VLAN 10 - Trusted (Blue) -->
+  <rect x="210" y="360" width="160" height="170" rx="8" fill="#3498db15" stroke="#3498db" stroke-width="2"/>
+  <rect x="210" y="360" width="160" height="25" rx="8" fill="#3498db"/>
+  <text x="290" y="378" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">VLAN 10 - TRUSTED</text>
+  <text x="290" y="400" text-anchor="middle" fill="#3498db" font-family="monospace" font-size="9">10.0.10.0/24</text>
+
+  <rect x="225" y="415" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#3498db55" stroke-width="1"/>
+  <text x="290" y="433" text-anchor="middle" fill="#3498db" font-family="monospace" font-size="9">Workstation</text>
+  <text x="290" y="450" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.10.20</text>
+
+  <rect x="225" y="470" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#3498db55" stroke-width="1"/>
+  <text x="290" y="488" text-anchor="middle" fill="#3498db" font-family="monospace" font-size="9">Admin Laptop</text>
+  <text x="290" y="505" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.10.21</text>
+
+  <!-- VLAN 20 - Servers (Orange) -->
+  <rect x="350" y="360" width="160" height="170" rx="8" fill="#e67e2215" stroke="#e67e22" stroke-width="2"/>
+  <rect x="350" y="360" width="160" height="25" rx="8" fill="#e67e22"/>
+  <text x="430" y="378" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">VLAN 20 - SERVERS</text>
+  <text x="430" y="400" text-anchor="middle" fill="#e67e22" font-family="monospace" font-size="9">10.0.20.0/24</text>
+
+  <rect x="365" y="415" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#e67e2255" stroke-width="1"/>
+  <text x="430" y="433" text-anchor="middle" fill="#e67e22" font-family="monospace" font-size="9">TrueNAS</text>
+  <text x="430" y="450" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.20.30</text>
+
+  <rect x="365" y="470" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#e67e2255" stroke-width="1"/>
+  <text x="430" y="488" text-anchor="middle" fill="#e67e22" font-family="monospace" font-size="9">Pi-hole DNS</text>
+  <text x="430" y="505" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.20.5</text>
+
+  <!-- VLAN 30 - IoT (Yellow) -->
+  <rect x="490" y="360" width="160" height="170" rx="8" fill="#f39c1215" stroke="#f39c12" stroke-width="2"/>
+  <rect x="490" y="360" width="160" height="25" rx="8" fill="#f39c12"/>
+  <text x="570" y="378" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">VLAN 30 - IoT</text>
+  <text x="570" y="400" text-anchor="middle" fill="#f39c12" font-family="monospace" font-size="9">10.0.30.0/24</text>
+
+  <rect x="505" y="415" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#f39c1255" stroke-width="1"/>
+  <text x="570" y="433" text-anchor="middle" fill="#f39c12" font-family="monospace" font-size="9">Smart Devices</text>
+  <text x="570" y="450" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.30.50-80</text>
+
+  <rect x="505" y="470" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#f39c1255" stroke-width="1"/>
+  <text x="570" y="488" text-anchor="middle" fill="#27ae60" font-family="monospace" font-size="9">✓ Internet Only</text>
+  <text x="570" y="505" text-anchor="middle" fill="#ff6b6b" font-family="monospace" font-size="8">✗ No Internal</text>
+
+  <!-- VLAN 40 - Cameras (Red) -->
+  <rect x="630" y="360" width="160" height="170" rx="8" fill="#e74c3c15" stroke="#e74c3c" stroke-width="2"/>
+  <rect x="630" y="360" width="160" height="25" rx="8" fill="#e74c3c"/>
+  <text x="710" y="378" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">VLAN 40 - CAMERAS</text>
+  <text x="710" y="400" text-anchor="middle" fill="#e74c3c" font-family="monospace" font-size="9">10.0.40.0/24</text>
+
+  <rect x="645" y="415" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#e74c3c55" stroke-width="1"/>
+  <text x="710" y="433" text-anchor="middle" fill="#e74c3c" font-family="monospace" font-size="9">IP Cameras</text>
+  <text x="710" y="450" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">10.0.40.90-95</text>
+
+  <rect x="645" y="470" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#e74c3c55" stroke-width="1"/>
+  <text x="710" y="488" text-anchor="middle" fill="#ff6b6b" font-family="monospace" font-size="9">✗ NO Internet</text>
+  <text x="710" y="505" text-anchor="middle" fill="#ff6b6b" font-family="monospace" font-size="8">✗ NO Internal</text>
+
+  <!-- VLAN 50 - Guest (Gray) -->
+  <rect x="770" y="360" width="160" height="170" rx="8" fill="#95a5a615" stroke="#95a5a6" stroke-width="2"/>
+  <rect x="770" y="360" width="160" height="25" rx="8" fill="#95a5a6"/>
+  <text x="850" y="378" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">VLAN 50 - GUEST</text>
+  <text x="850" y="400" text-anchor="middle" fill="#95a5a6" font-family="monospace" font-size="9">10.0.50.0/24</text>
+
+  <rect x="785" y="415" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#95a5a655" stroke-width="1"/>
+  <text x="850" y="433" text-anchor="middle" fill="#95a5a6" font-family="monospace" font-size="9">Visitor WiFi</text>
+  <text x="850" y="450" text-anchor="middle" fill="#666" font-family="monospace" font-size="8">DHCP Assigned</text>
+
+  <rect x="785" y="470" width="130" height="45" rx="3" fill="#1a1a2e" stroke="#95a5a655" stroke-width="1"/>
+  <text x="850" y="488" text-anchor="middle" fill="#27ae60" font-family="monospace" font-size="9">✓ Internet Only</text>
+  <text x="850" y="505" text-anchor="middle" fill="#ff6b6b" font-family="monospace" font-size="8">✗ No Internal</text>
+
+  <!-- VLAN 99 - Security (Cyan) -->
+  <rect x="350" y="555" width="300" height="90" rx="8" fill="#00d4ff15" stroke="#00d4ff" stroke-width="2"/>
+  <rect x="350" y="555" width="300" height="25" rx="8" fill="#00d4ff"/>
+  <text x="500" y="573" text-anchor="middle" fill="#0a0a0f" font-family="monospace" font-size="11" font-weight="bold">VLAN 99 - SECURITY MONITORING</text>
+  <text x="500" y="595" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="9">10.0.99.0/24</text>
+
+  <rect x="365" y="605" width="130" height="30" rx="3" fill="#1a1a2e" stroke="#00d4ff55" stroke-width="1"/>
+  <text x="430" y="625" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="9">Security Onion</text>
+
+  <rect x="505" y="605" width="130" height="30" rx="3" fill="#1a1a2e" stroke="#00d4ff55" stroke-width="1"/>
+  <text x="570" y="625" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="9">IDS/IPS • SIEM</text>
+
+  <!-- SPAN connection -->
+  <line x1="500" y1="310" x2="500" y2="555" stroke="#00d4ff" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="515" y="540" fill="#00d4ff" font-family="monospace" font-size="8">SPAN/Mirror</text>
+
+  <!-- WiFi AP showing multiple SSIDs -->
+  <rect x="70" y="555" width="160" height="90" rx="8" fill="#1abc9c15" stroke="#1abc9c" stroke-width="2"/>
+  <rect x="70" y="555" width="160" height="25" rx="8" fill="#1abc9c"/>
+  <text x="150" y="573" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">WiFi AP - BE11000</text>
+  <text x="150" y="595" text-anchor="middle" fill="#3498db" font-family="monospace" font-size="8">SSID: Home → VLAN 10</text>
+  <text x="150" y="610" text-anchor="middle" fill="#f39c12" font-family="monospace" font-size="8">SSID: IoT → VLAN 30</text>
+  <text x="150" y="625" text-anchor="middle" fill="#95a5a6" font-family="monospace" font-size="8">SSID: Guest → VLAN 50</text>
+
+  <!-- Legend -->
+  <rect x="720" y="555" width="210" height="130" rx="5" fill="#0d2137" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="825" y="575" text-anchor="middle" fill="#4ecdc4" font-family="monospace" font-size="10" font-weight="bold">TRAFFIC FLOW RULES</text>
+
+  <text x="735" y="595" fill="#27ae60" font-family="monospace" font-size="9">✓ Management → All (admin)</text>
+  <text x="735" y="612" fill="#27ae60" font-family="monospace" font-size="9">✓ Trusted → Servers (limited)</text>
+  <text x="735" y="629" fill="#27ae60" font-family="monospace" font-size="9">✓ IoT/Guest → Internet only</text>
+  <text x="735" y="646" fill="#ff6b6b" font-family="monospace" font-size="9">✗ Cameras → Fully isolated</text>
+  <text x="735" y="663" fill="#00d4ff" font-family="monospace" font-size="9">◉ Security → Read-only mirror</text>
+  <text x="735" y="680" fill="#888" font-family="monospace" font-size="9">↔ Inter-VLAN via OPNsense</text>
+
+  <!-- Footer -->
+  <text x="500" y="720" text-anchor="middle" fill="#444" font-family="monospace" font-size="10">Homelab Phase 1 - Target Architecture with Defense in Depth</text>
+</svg>
